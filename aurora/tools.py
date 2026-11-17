@@ -123,7 +123,7 @@ async def reservar_area(area: str, data: str, tool_context: ToolContext) -> dict
     if codigo is None:
         return {"status": "recusada", "motivo": "data indisponível para essa área"}
     return {"status": "ok", "codigo": codigo, "area": a["id"], "data": d,
-            "cobranca": a["taxa"] if a["taxa"] > 0 else 0}
+            "taxa_cobrada": a["taxa"]}
 
 
 async def cancelar_reserva(area: str, data: str, tool_context: ToolContext) -> dict:
