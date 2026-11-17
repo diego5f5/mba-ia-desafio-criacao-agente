@@ -79,7 +79,7 @@ async def verificar_disponibilidade(area: str, data: str) -> dict:
             "situacao": "ocupada" if await db.data_ocupada(a["id"], d) else "livre"}
 
 
-async def _exige_confirmacao_reserva(area: str, data: str) -> bool:
+async def _exige_confirmacao_reserva(area: str, data: str, tool_context: ToolContext | None = None) -> bool:
     """Pede confirmação quando a reserva gera cobrança (taxa > 0).
 
     Precisa ser estável: o ADK reavalia esta função ao retomar a execução, então ela
